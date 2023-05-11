@@ -2,7 +2,7 @@
   <section class="app-main">
     <router-view v-slot="{ Component }">
       <transition name="fade-transform" mode="out-in">
-        <component :is="Component" />
+        <component :is="Component" :key='key' />
       </transition>
     </router-view>
   </section>
@@ -13,6 +13,17 @@
 export default {
   name: 'AppMain'
 }
+</script>
+
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const $route = useRoute()
+
+const key = computed(() => {
+  return $route.path
+})
 </script>
 
 <style scoped>
