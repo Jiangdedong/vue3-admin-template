@@ -1,8 +1,12 @@
 <template>
-    <el-menu-item :index="route.path" :route="route">
-      <svg-icon v-if="route.meta && route.meta.icon" :icon-class="route.meta.icon"/>
-      <template #title>{{ route.meta && route.meta.title }}</template >
-    </el-menu-item>
+  <el-menu-item v-if="!isExternal(route.path)" :index="route.path" :route="route">
+    <svg-icon v-if="route.meta && route.meta.icon" :icon-class="route.meta.icon"/>
+    <template #title>{{ route.meta && route.meta.title }}</template >
+  </el-menu-item>
+  <el-menu-item v-else @click="openLink(route.path)">
+    <svg-icon v-if="route.meta && route.meta.icon" :icon-class="route.meta.icon"/>
+    <template #title>{{ route.meta && route.meta.title }}</template >
+  </el-menu-item>
 </template>
 
 <script>
@@ -12,6 +16,7 @@ export default {
 </script>
 
 <script setup>
+import { isExternal } from "@/utils/validate"
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -22,6 +27,11 @@ const props = defineProps({
     type: Object
   }
 })
+
+const openLink = (href) => {
+  window.open(href)
+}
+
 const route = computed(() => {
   if (props.routeInfo.children && props.routeInfo.children.length) {
     return props.routeInfo.children[0]
