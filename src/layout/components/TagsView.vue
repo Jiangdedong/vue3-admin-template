@@ -38,7 +38,6 @@ const tagsViewStore = useTagsViewStore()
 const vm = getCurrentInstance()
 
 const visible = ref(false)
-// const count = ref(0)
 const $top = ref(0)
 const $left = ref(0)
 const selectedTag = ref(null)
@@ -48,20 +47,16 @@ const scrollPaneRef = ref(null)
 
 const addViewTags = () => {
   const { name, path } = $route
-  // this.count++;
-  // if(this.count!=1){
   if (name || path === '/dashboard') {
     tagsViewStore.addView($route)
   }
-  // }
-  return false
 }
 
 const moveToCurrentTag = () => {
   nextTick(() => {
     for (const tag of tagRef.value) {
       if (tag.to.path === $route.path) {
-        scrollPaneRef.value.moveToTarget(tag)
+        scrollPaneRef.value.moveToTarget(tagRef.value, tag)
         if (tag.to.fullPath !== $route.fullPath) {
           tagsViewStore.updateVisitedView($route)
         }
@@ -150,13 +145,12 @@ watch(() => $route,
   { immediate: true, deep: true }
 )
 
-watch(visible,(newValue, oldValue) => {
-    console.log(oldValue)
-    if (newValue) {
-      document.body.addEventListener('click', closeMenu)
-    } else {
-      document.body.removeEventListener('click', closeMenu)
-    }
+watch(visible, (newValue) => {
+  if (newValue) {
+    document.body.addEventListener('click', closeMenu)
+  } else {
+    document.body.removeEventListener('click', closeMenu)
+  }
   }
 )
 </script>
