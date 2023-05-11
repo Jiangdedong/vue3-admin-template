@@ -75,7 +75,7 @@ const refreshSelectedTag = (view) => {
     const { fullPath } = view
     nextTick(() => {
       $router.replace({
-        path: fullPath
+        path:'/redirect' + fullPath
       })
     })
   })
