@@ -8,3 +8,7 @@ const { path } = params
 $router.replace({ path: '/' + path, query })
 
 </script>
+
+<template>
+  <div />
+</template>
