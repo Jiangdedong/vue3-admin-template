@@ -20,7 +20,7 @@ export default {
 
 <script setup>
 import { addClass, removeClass } from '@/utils'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps({
   clickNotClose: {
@@ -46,12 +46,6 @@ const closeSidebar = (evt) => {
 const addEventClick = () => {
   window.addEventListener('click', closeSidebar)
 }
-
-const insertToBody = () => {
-  const body = document.querySelector('body')
-  body.insertBefore(rightPanelRef.value, body.firstChild)
-}
-
 watch(show, (newVal) => {
   if (newVal && !props.clickNotClose.value) {
     addEventClick()
@@ -61,14 +55,6 @@ watch(show, (newVal) => {
   } else {
     removeClass(document.body, 'showRightPanel')
   }
-})
-
-onMounted(() => {
-  insertToBody()
-})
-
-onUnmounted(() => {
-  rightPanelRef.value.remove()
 })
 </script>
 
