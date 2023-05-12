@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">111</div>
     <!-- <SvgIcon icon-class="form" /> -->
   </div>
 </template>
