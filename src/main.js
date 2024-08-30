@@ -13,6 +13,7 @@ import 'virtual:svg-icons-register'
 
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
+import 'virtual:uno.css'
 const app = createApp(App)
 
 app.component('svg-icon', SvgIcon)

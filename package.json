@@ -1,43 +1,57 @@
 {
   "name": "vue3-admin-template",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "lint:lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "commit": "git add -A && czg && git push",
+    "pull": "git pull --autostash --rebase"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.1.0",
+    "@element-plus/icons-vue": "^2.3.1",
     "babel-eslint": "^10.1.0",
-    "element-plus": "^2.3.3",
+    "element-plus": "^2.7.0",
     "normalize.css": "^8.0.1",
     "path-to-regexp": "^6.2.1",
-    "pinia": "^2.0.32",
-    "sass": "^1.62.0",
-    "sass-loader": "^13.2.2",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "pinia": "^2.1.7",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
-    "@vitejs/plugin-vue": "^4.0.0",
-    "@vitejs/plugin-vue-jsx": "^3.0.0",
-    "@vue/eslint-config-prettier": "^7.1.0",
-    "@vue/test-utils": "^2.3.0",
-    "eslint": "^8.34.0",
-    "eslint-plugin-vue": "^9.9.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/test-utils": "^2.4.5",
     "fast-glob": "^3.2.12",
-    "jsdom": "^21.1.0",
-    "prettier": "^2.8.4",
-    "vite": "^4.1.4",
+    "cz-git": "^1.9.1",
+    "czg": "^1.9.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "unocss": "^0.59.3",
+    "vite": "^5.2.8",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitest": "^0.29.1"
+    "vite-plugin-vue-devtools": "^7.0.25",
+    "unplugin-auto-import": "^0.17.2",
+    "vitest": "^1.4.0"
   },
-  "eslintConfig": {
-    "parser": "babel-eslint"
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }
