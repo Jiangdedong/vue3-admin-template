@@ -155,16 +155,16 @@ onMounted(() => {
   }
   .hasTagsView .fixed-header+.app-main {
     padding-top: 84px;
-    min-height: 100vh;
+    height: 100vh;
   }
 
   .fixed-header+.app-main {
     padding-top: 50px;
-    min-height: 100vh;
+    height: 100vh;
   }
 
   .hasTagsView .app-main {
-    min-height: calc(100vh - 84px);
+    height: calc(100vh - 84px);
   }
   .mobile .fixed-header {
     width: 100%;

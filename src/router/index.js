@@ -142,6 +142,19 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/demo',
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        name: 'Demo',
+        component: () => import('@/views/demo/index.vue'),
+        meta: { title: 'demo', icon: 'form' }
+      }
+    ]
+  },
+
   // 404 page must be placed at the end !!!
   { 
     path: "/:pathMatch(.*)*",

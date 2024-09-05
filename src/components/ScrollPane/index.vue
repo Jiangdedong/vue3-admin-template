@@ -20,7 +20,7 @@ const scrollContainerRef = ref(null)
 const emits = defineEmits(['scroll'])
 
 const scrollWrapper = computed(() => {
-  return scrollContainerRef.value.$refs.wrapRef
+  return scrollContainerRef.value && scrollContainerRef.value.$refs.wrapRef || null
 })
 
 const handleScroll = (e) => {
@@ -74,11 +74,11 @@ const moveToTarget = (tagList, currentTag) => {
 defineExpose({ moveToTarget })
 
 onMounted(() => {
-  scrollWrapper.value.addEventListener('scroll', emitScroll, true)
+  scrollWrapper.value && scrollWrapper.value.addEventListener('scroll', emitScroll, true)
 })
 
 onUnmounted(() => {
-  scrollWrapper.value.removeEventListener('scroll', emitScroll, true)
+  scrollWrapper.value && scrollWrapper.value.removeEventListener('scroll', emitScroll, true)
 })
 </script>
 
